@@ -6,7 +6,7 @@ module Quickbooks
         delete_by_query_string(invoice)
       end
 
-      def send(invoice, email_address=nil)
+      def transmit(invoice, email_address=nil)
         query = email_address.present? ? "?sendTo=#{email_address}" : ""
         url = "#{url_for_resource(model::REST_RESOURCE)}/#{invoice.id}/send#{query}"
         response = do_http_post(url,{})
